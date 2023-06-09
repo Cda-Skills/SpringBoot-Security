@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr"
+  xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/5.2.0/css/bootstrap.min.css">
+        <title>Inscription / Login</title>
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/}">SpringBoot Practice</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/createProd}">|   Ajouter un produit   |</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/listProd}">|   Liste de produits   |</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/login}">|   Next   |</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/login}">|   Next   |</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/login}">|   Next   |</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/login}">|   Next   |</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/inscription}">|   Inscription / Login   |</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<section>
+	<div class="row pt-5">  
+		<div class="col-lg-4 offset-lg-4 col-12 pt-5">
+		
+		<!--LE FORMULAIRE : -->
+		    <form 
+		    	method="POST"
+		    	role="form"	
+		    	class="entourage" 
+		    	th:action="@{/save}"
+		    	th:object="${userAddtribute}"
+		    	>
+		    <div>
+		    <h1>Inscrivez-vous ..</h1>
+		    </div>
+		      <div class="form-group">
+		          <div class="row">
+		            <div class="col-12">
+		              <label for="nom">Nom</label>
+		              <input 
+		              		id="nom" 
+		              		class="form-control" 
+		              		type="text" 
+		              		name="pseudo" 
+		              		placeholder="Pseudo"/>
+		              
+		            </div>
+		          </div>
+		      </div>
+		      
+		      <div class="form-group">
+		          <div class="row">
+		            <div class="col-12">
+		              <label for="mail">Mail</label>
+		              <input 
+		              		id="mail" 
+		              		class="form-control" 
+		              		type="text" 
+		              		name="email" 
+		              		placeholder="Entrer votre Email"/>
+		              
+		            </div>
+		          </div>
+		      </div>
+		      
+		      <label class="connectezVous">Un bon mot de passe requiert une certaine complexité</label>
+		      
+		      <div class="form-group">
+		          <div class="row">
+		            <div class="col-12">
+		              <label for="password">Mot de Passe : </label>
+		              <input 
+		              		id="password" 
+		              		class="form-control" 
+		              		type="password" 
+		              		name="password" 
+		              		placeholder=""/>
+		              
+		            </div>
+		          </div>
+		      </div>
+		      
+			  <div class="form-group">
+		          <div class="row">
+		            <div class="col-12">
+		              <label for="passwordCheck">Confirmation du MdP : </label>
+		              <input 
+		              		id="passwordCheck" 
+		              		class="form-control" 
+		              		type="password" 
+		              		name="passwordCheck" 
+		              		placeholder=" "/>
+		             
+		           	</div>
+		          	</div>
+		      </div>
+				    <div>
+								<label for="date">Date de création : </label>
+								<input type="date" id="date" name="date" "${now}">
+					</div>
+				      <br>
+		      
+		    
+		      <button class="btn btn-primary" type="submit">S'inscrire</button>
+		    </form>
+		    <footer>
+			<a th:href="@{listUser}">Liste des utilisateurs</a>
+			</footer>
+		</div>
+	</div>
+</section> 
+
+</body>
+</html>
