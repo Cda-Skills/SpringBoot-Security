@@ -3,53 +3,19 @@
 
   <head>
   
-  		<meta charset="UTF-8">
-    	<link rel="stylesheet" type="text/css" href="webjars/bootstrap/5.2.0/css/bootstrap.min.css">
+  	
   
   		<title> The Place To Be !! </title>
-  		
+        
+		<div th:replace="fragments/metalinks :: head"></div>
   		
     		
   </head>
   
   <body>
+  <div th:replace="fragments/topmenu :: header"></div>
   
-  		<br/>
-  		
-  		
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" th:href="@{/}">SpringBoot Practice</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/createProd}">|   Ajouter un produit   |</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/listProd}">|   Liste de produits   |</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/login}">|   Next   |</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/login}">|   Next   |</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/login}">|   Next   |</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/login}">|   Next   |</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/inscription}">|   Inscription / Login   |</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+
 	</br>
     </br>
     </br>
@@ -68,7 +34,7 @@
     </div>
 </div>
 
-	
+	<div th:replace="fragments/footer :: foot"></div>
 	</body>
   
 </html>

@@ -9,39 +9,7 @@
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" th:href="@{/}">SpringBoot Practice</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/createProd}">|   Ajouter un produit   |</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/listProd}">|   Liste de produits   |</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/login}">|   Next   |</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/login}">|   Next   |</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/login}">|   Next   |</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/login}">|   Next   |</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/inscription}">|   Inscription / Login   |</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<div th:replace="fragments/topmenu :: header"></div>
 <section>
 	<div class="row pt-5">  
 		<div class="col-lg-4 offset-lg-4 col-12 pt-5">
@@ -118,21 +86,20 @@
 		           	</div>
 		          	</div>
 		      </div>
-				    <div>
-								<label for="date">Date de création : </label>
-								<input type="date" id="date" name="date" "${now}">
-					</div>
+				  <!---->
 				      <br>
 		      
 		    
 		      <button class="btn btn-primary" type="submit">S'inscrire</button>
 		    </form>
-		    <footer>
+		    
+		    </br>
 			<a th:href="@{listUser}">Liste des utilisateurs</a>
-			</footer>
+			
 		</div>
 	</div>
 </section> 
-
+<div th:replace="fragments/footer :: foot"></div>
 </body>
+
 </html>

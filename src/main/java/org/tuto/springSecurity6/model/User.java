@@ -34,11 +34,29 @@ public class User {
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date date;
+	// TODO la date devrait etre automatisée
+	
+	
+	public User() {
+		super();
+	}
+	
+	
+	public User(String pseudo, String email, String password, String passwordCheck, Date date) {
+		super();
+		this.pseudo = pseudo;
+		this.email = email;
+		this.password = password;
+		this.passwordCheck = passwordCheck;
+		this.date = date;
+	}
+
 
 	public Long getIdUser() {
 		return idUser;
 	}
 
+	
 	public void setIdUser(Long idUser) {
 		this.idUser = idUser;
 	}
@@ -83,14 +101,7 @@ public class User {
 		this.date = date;
 	}
 
-	public User(String pseudo, String email, String password, String passwordCheck, Date date) {
-		super();
-		this.pseudo = pseudo;
-		this.email = email;
-		this.password = password;
-		this.passwordCheck = passwordCheck;
-		this.date = date;
-	}
+
 
 	@Override
 	public String toString() {
