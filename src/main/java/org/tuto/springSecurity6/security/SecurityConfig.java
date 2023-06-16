@@ -10,27 +10,36 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
+import static org.springframework.security.config.Customizer.withDefaults;
 
 
 @Configuration
 public class SecurityConfig {
 	
+	/*
+	 * @Bean public SecurityFilterChain securityFilterChain(HttpSecurity
+	 * httpSecurity) throws Exception {
+	 * 
+	 * httpSecurity.authorizeHttpRequests((connex) -> connex .requestMatchers("/",
+	 * "/logout").permitAll() .requestMatchers("/inscription").hasRole("USER")
+	 * .requestMatchers("/listUser").hasRole("ADMIN") .anyRequest() .authenticated()
+	 * )
+	 * 
+	 * .httpBasic(withDefaults());
+	 * 
+	 * return httpSecurity.build(); }
+	 */
 	@Bean
-	public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-		
-		httpSecurity.authorizeHttpRequests((connex) -> connex
-						.requestMatchers("/inscription").hasRole("USER")
-						.requestMatchers("/listUser").hasRole("ADMIN")
-						.requestMatchers("/").permitAll()
-						.anyRequest()
-						.authenticated()
-						)
-		
-						.httpBasic();
-
-		return httpSecurity.build(); 
-	}
-
+	  SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+	    return http
+	      .requiresChannel(channel -> 
+	          channel.anyRequest().requiresSecure())
+	      .authorizeRequests(authorize ->
+	          authorize.anyRequest().permitAll())
+	      .build();
+	    }
+	
+	
 	@Bean
 	public InMemoryUserDetailsManager userDetailService() {
 		
