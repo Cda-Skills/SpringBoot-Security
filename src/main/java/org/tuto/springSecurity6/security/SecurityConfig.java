@@ -12,55 +12,46 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
-
 @Configuration
 public class SecurityConfig {
 	
-	/*
-	 * @Bean public SecurityFilterChain securityFilterChain(HttpSecurity
-	 * httpSecurity) throws Exception {
-	 * 
-	 * httpSecurity.authorizeHttpRequests((connex) -> connex .requestMatchers("/",
-	 * "/logout").permitAll() .requestMatchers("/inscription").hasRole("USER")
-	 * .requestMatchers("/listUser").hasRole("ADMIN") .anyRequest() .authenticated()
-	 * )
-	 * 
-	 * .httpBasic(withDefaults());
-	 * 
-	 * return httpSecurity.build(); }
-	 */
-	@Bean
-	  SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-	    return http
-	      .requiresChannel(channel -> 
-	          channel.anyRequest().requiresSecure())
-	      .authorizeRequests(authorize ->
-	          authorize.anyRequest().permitAll())
-	      .build();
-	    }
-	
-	
+
 	@Bean
 	public InMemoryUserDetailsManager userDetailService() {
-		
-		UserDetails user = User.builder()
-				.username("user")
-				.password(passwordEncoder().encode("Password"))
-				.roles("USER")
+
+		UserDetails user = User.builder().username("user").password(passwordEncoder().encode("Password")).roles("USER")
 				.build();
-		
-		UserDetails admin = User.builder()
-				.username("Admin")
-				.password(passwordEncoder().encode("StrongPass"))
-				.roles("ADMIN")
-				.build();
-		
+
+		UserDetails admin = User.builder().username("Admin").password(passwordEncoder().encode("StrongPass"))
+				.roles("ADMIN").build();
+
 		return new InMemoryUserDetailsManager(user, admin);
 	}
-	
-	
+
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
+
+	@Bean
+	public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+
+		httpSecurity
+				.authorizeHttpRequests((connex) -> connex
+						.requestMatchers("/", "/logout").permitAll()
+						.requestMatchers("/inscription").hasRole("USER").requestMatchers("/listUser").hasRole("ADMIN")
+						.anyRequest().authenticated())
+
+				.httpBasic(withDefaults());
+
+		return httpSecurity.build();
+	}
+
+	/*
+	 * @Bean SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+	 * return http .requiresChannel(channel ->
+	 * channel.anyRequest().requiresSecure()) .authorizeRequests(authorize ->
+	 * authorize.anyRequest().permitAll()) .build(); }
+	 */
+
 }
